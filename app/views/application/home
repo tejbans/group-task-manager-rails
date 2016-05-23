@@ -1,0 +1,5 @@
+<div class="center jumbotron">
+<h1>Welcome to Group Task Manager </h1>
+<%= link_to "Sign up now!", new_user_path, class: "btn btn-lg btn-primary" %>
+<%= link_to("Login with facebook!", "/auth/facebook",class: "btn btn-lg btn-primary") %>
+</div>

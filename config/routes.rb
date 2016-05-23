@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  resources :tasks
-  resources :lists
   resources :users
+    resources :lists do
+      resources :tasks
+    end
+
+get '/auth/:provider/callback' => 'sessions#create'
+delete 'logout'  => 'sessions#destroy'
+root 'application#home'
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
