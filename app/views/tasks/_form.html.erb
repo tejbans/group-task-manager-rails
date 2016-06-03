@@ -1,0 +1,21 @@
+<%= form_for([@list, @task]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title , disabled: !current_user.admin?%>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, disabled: !current_user.admin? %>
+
+  <%= f.label :status %>
+  <%= f.select :status, Task.statuses.keys.map{ |s| [s, s] } %>
+
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date,disabled: !current_user.admin? %>
+
+  
+  <%= f.collection_select :user_id, User.all, :id, :email, include_blank: 'Choose a User' %>
+
+ 
+  <%= f.submit %>
+  <% end %>

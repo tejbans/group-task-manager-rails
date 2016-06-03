@@ -1,3 +1,22 @@
-Welcome
 
-<%= link_to 'logout', logout_path, method: 'delete' %>
+<h2> All Task Lists </h2>
+<% @lists.each  do |list| %>
+ <h3><%= link_to list.title, list_path(list) %></h3>
+ <ul>
+ <% list.tasks.each do |task| %>
+ <li>
+    <%= task.title %> |
+    <%= task.status %> |
+    <%= task.due_date %> |
+    <% if task.user.nil? %>
+        <%= link_to 'Claim Task', edit_list_task_path(list,task) %>
+         <% else %>
+        Assigned to: <%= task.user.email %>
+    <% end %> 
+</li>
+<% end %>
+</ul>
+<% end %><br>
+
+<%= link_to_if(current_user.admin?, 'Add List', new_list_path) %>
+

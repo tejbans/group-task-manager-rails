@@ -3,8 +3,12 @@ Rails.application.routes.draw do
     resources :lists do
       resources :tasks
     end
-
+get 'mylists' => 'lists#userindex'
+get 'mylists/tasks/completed' => 'tasks#completed'
+get 'mylists/tasks/overdue' => 'tasks#overdue'
 get '/auth/:provider/callback' => 'sessions#create'
+get    'login'   => 'sessions#new'
+post   'login'   => 'sessions#create'
 delete 'logout'  => 'sessions#destroy'
 root 'application#home'
 

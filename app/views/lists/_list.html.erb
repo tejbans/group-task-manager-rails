@@ -1,0 +1,11 @@
+<h3><%= list.title %></h3> 
+<ul>
+ <% list.tasks.each do |task| %>
+ <li>
+    <%= task.description %> |
+    <%= task.status %> |
+    <%= task.due_date %> |
+    Assigned to: <%= task.user.email %>
+    <% end %> 
+  </li>
+</ul>

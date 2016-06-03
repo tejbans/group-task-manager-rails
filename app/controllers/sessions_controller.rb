@@ -1,20 +1,28 @@
 class SessionsController < ApplicationController
 
   def create
-      user = User.find_or_create_by(:email => auth['info']['email']) do |user|
-        user.email = auth['info']['email']
-        user.password = SecureRandom.hex
+      if auth_hash
+        user = User.find_or_create_by_omniauth(auth_hash)
+        log_in(user)
+        redirect_to lists_path
+      else
+        user = User.find_by(email: params[:session][:email].downcase)
+        if user && user.authenticate(params[:session][:password])
+          log_in user
+          redirect_to lists_path
+        else
+          flash.now[:danger] = 'Invalid email/password combination'
+          render 'new'
+        end
       end
-  session[:user_id] = user.try(:id)
-  redirect_to lists_path
   end
 
-  def auth
+  def auth_hash
     request.env['omniauth.auth']
   end
 
   def destroy
-    session.clear
+    log_out
     redirect_to root_path
   end
 

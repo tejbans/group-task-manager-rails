@@ -1,0 +1,9 @@
+<h2> <%= my_string%> Tasks </h2>
+<%  @tasks.each do |task | %>
+ <h4> <%= task.title %> in <%= link_to task.list.title, list_path(task.list) %></h4>
+Description: <%= task.description %> <br>
+Status: <%= task.status %> <br>
+Due Date: <%= task.due_date %> <br>
+Assigned to: <%= task.user.email %>
+<% end %>
+

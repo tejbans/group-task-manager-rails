@@ -1,0 +1,12 @@
+<% if logged_in? %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1><%= current_user.email %></h1><br>
+      <%= link_to "All Task Lists", lists_path %><br><br>
+      <%= link_to "My Task Lists", mylists_path %><br><br>
+      <%= link_to "My Completed Tasks", mylists_tasks_completed_path %><br><br>
+      <%= link_to "My Overdue Tasks",mylists_tasks_overdue_path %>
+    </section>
+  </aside>
+<% end %>

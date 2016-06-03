@@ -8,11 +8,15 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
+<%= render 'layouts/sidebar' %>
+
 <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
+<div class="col-md-8">
+  <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
-<%= yield %>
+  <%= yield %>
+</div>
  </div>
 </body>
 </html>
