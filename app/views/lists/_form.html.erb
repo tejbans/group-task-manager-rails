@@ -1,9 +1,11 @@
 <%= form_for @list do |f| %>
- 
+
+<%= render 'shared/error_messages', object: f.object %>
+
  <%= f.label "List title" %>
  <%= f.text_field :title %>
  <ul>
- <%= f.fields_for :tasks do |task| %>
+ <%= f.fields_for :tasks , @list.tasks.build do |task| %>
  <li>
   <%= task.label :title %>
   <%= task.text_field :title %>

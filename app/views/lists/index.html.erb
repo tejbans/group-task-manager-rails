@@ -5,7 +5,7 @@
  <ul>
  <% list.tasks.each do |task| %>
  <li>
-    <%= task.title %> |
+    <%= link_to task.title, list_task_path(list, task) %> |
     <%= task.status %> |
     <%= task.due_date %> |
     <% if task.user.nil? %>

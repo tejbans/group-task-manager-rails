@@ -1,4 +1,4 @@
-<h3> <%= @task.title %> in <%= @task.list.title %></h3>
+<h3> <%= @task.title %> in <%= link_to @task.list.title, list_path(@task.list) %></h3>
 <p>
 Description: <%= @task.description %> <br>
 Status: <%= @task.status %> <br>
@@ -10,5 +10,6 @@ Assigned to:  <%= @task.user_info || 'None' %> <br>
   <%= link_to "Edit" , edit_list_task_path(@list, @task) %> |
   <%= link_to 'Delete', list_task_path(@list,@task), method: :delete, data: { confirm: "You sure?" }%>
   <%else %>
-    <%= link_to "Update Status" , edit_list_task_path(@list, @task) %> 
+    <%= link_to "Update Status" , edit_list_task_path(@list, @task) %> |
+    <%= link_to 'Claim Task', edit_list_task_path(@list,@task) %>
   <%end %> 

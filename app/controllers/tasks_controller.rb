@@ -93,7 +93,7 @@ end
 
   def check_admin
     if !current_user.admin?
-      flash[:danger] = "Only Admins can add Tasks"
+      flash[:danger] = "Only Admins can add/delete Tasks"
       redirect_to @list
     end
   end

@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the App!"
+      flash[:success] = "Welcome to Group Task Manager!"
       redirect_to lists_path
     else
       render 'new'
