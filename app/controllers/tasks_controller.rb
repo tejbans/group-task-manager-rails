@@ -3,6 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [ :show, :edit, :update,:destroy]
   before_action :check_admin , only: [:new, :destroy]
   before_action :downcase_strip_title, only: [:create]
+  
 
 def index
   @tasks = Task.all

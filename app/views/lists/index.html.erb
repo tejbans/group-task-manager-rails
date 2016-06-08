@@ -1,5 +1,6 @@
 
 <h2> All Task Lists </h2>
+
 <% @lists.each  do |list| %>
  <h3><%= link_to list.title, list_path(list) %></h3>
  <ul>
@@ -8,11 +9,7 @@
     <%= link_to task.title, list_task_path(list, task) %> |
     <%= task.status %> |
     <%= task.due_date %> |
-    <% if task.user.nil? %>
-        <%= link_to 'Claim Task', edit_list_task_path(list,task) %>
-         <% else %>
-        Assigned to: <%= task.user.email %>
-    <% end %> 
+    Assigned to: <%= task.user_info ||  link_to('Claim Task', edit_list_task_path(list,task)) %>
 </li>
 <% end %>
 </ul>

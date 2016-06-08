@@ -1,4 +1,5 @@
 <h2> My Task Lists </h2>
+
 <% @lists.uniq.each  do |list| %>
  <h3><%= link_to list.title, list_path(list) %></h3>
  <ul>

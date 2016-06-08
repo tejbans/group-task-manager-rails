@@ -5,7 +5,7 @@
  <%= f.label "List title" %>
  <%= f.text_field :title %>
  <ul>
- <%= f.fields_for :tasks , @list.tasks.build do |task| %>
+ <%= f.fields_for :tasks  do |task| %>
  <li>
   <%= task.label :title %>
   <%= task.text_field :title %>

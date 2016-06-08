@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
   belongs_to  :list
   validates :title, presence: true , uniqueness: { case_sensitive: false }
   validates :due_date, presence: true
-  validate :due_date_cannot_be_in_the_past
+  validate :due_date_cannot_be_in_the_past , on: :create
   
   enum status: [:in_progress, :completed]
 
