@@ -14,11 +14,14 @@ class User < ActiveRecord::Base
   end
 
   def completed_tasks
-    tasks.select {|task| task.status == "completed"}
+    tasks.where("status = 1")
   end
 
   def overdue_tasks
-    tasks.select {|task| task.status == 'in_progress' && task.due_date <  Time.now }
+    tasks.where("status = 0 AND due_date < ?", Time.now )
   end
+
   
 end
+
+

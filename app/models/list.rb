@@ -8,7 +8,6 @@ class List < ActiveRecord::Base
     if task_attribute[:title].present? 
       if !tasks.detect{|t| t.title.strip == task_attribute[:title].strip}
         task = tasks.build(task_attribute)
-        self.tasks << task
       end
     end
   end
