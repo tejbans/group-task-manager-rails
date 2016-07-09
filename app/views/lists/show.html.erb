@@ -1,12 +1,13 @@
 
-<h3><%= @list.title %></h3>  
+<h3 class="listTitle"><%= @list.title %></h3>  
 <ul>
   <% @list.tasks.each do |task| %>
-     <li>
-        <%= link_to task.title, list_task_path(@list, task) %> |
-        <%= task.status %> |
-        <%= task.due_date %> |
-        <%= task.user_info ||  link_to('Claim Task', edit_list_task_path(@list,task)) %>
+     <li id="task-<%= task.id %>">
+        <span class="title" id="taskTitle-<%= task.id %>"><%= link_to task.title, list_task_path(@list, task) %> |</span>
+        <span id="taskStatus-<%= task.id %>"><%= task.status %> |</span>
+        <span id="taskDuedate-<%= task.id %>"><%= task.due_date %> |</span>
+        <span id="taskUser-<%= task.id %>"><%= task.user_info ||  link_to('Claim Task', edit_list_task_path(@list,task)) %></span>
+        
       </li>
   <% end %><br>
   <%= link_to_if(current_user.admin?, 'Add a Task', new_list_task_path(@list))  %>
@@ -20,3 +21,24 @@
 <%= link_to 'Back', :back %>
 
 
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $("span[class=title]").on("click", function(e) {
+    e.preventDefault();
+    var url = this.childNodes[0].href + ".json";
+    $.get(url, function(data){
+      var id = data["id"]
+      var taskTitle = "<h4>" + data["title"] + "</h4>";
+      var taskDescription = "<p> Description: " + "<i>"+ data["description"]+ "</i>" + "</p>";
+      var taskStatus = "<p>Status: " + "<i>"+ data["status"] + "</i>" + "</p>";
+      var taskDuedate = "<p>Due Date: " + "<i>"+ data["due_date"] + "</i>" + "</p>";
+      var taskUser = "<p>Assigned to: " + $("#taskUser-" + id).html() + "</p>";
+      var taskSeperator = "<p>----------------------------------</p>";
+      
+      var taskJ = taskTitle + taskDescription + taskStatus + taskDuedate + taskUser+ taskSeperator;
+
+      $("#task-" + id).html(taskJ);
+    });
+  });
+});
+</script>

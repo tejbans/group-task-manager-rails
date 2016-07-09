@@ -1,9 +1,9 @@
-<h3> <%= @task.title %> in <%= link_to @task.list.title, list_path(@task.list) %></h3>
-<p>
-Description: <%= @task.description %> <br>
-Status: <%= @task.status %> <br>
-Due Date: <%= @task.due_date %> <br>
-Assigned to:  <%= @task.user_info || 'None' %> <br>
+<h3 class="taskTitle"> <%= @task.title %> in <%= link_to @task.list.title, list_path(@task.list) %></h3>
+
+<p class="taskDescription">Description: <%= @task.description %> </p>
+<p class="taskStatus">Status: <%= @task.status %> </p>
+<p class="taskDuedate">Due Date: <%= @task.due_date %> </p>
+<p class="taskUser">Assigned to:  <%= @task.user_info || 'None' %> </p>
 
 
 <% if current_user.admin? %>
