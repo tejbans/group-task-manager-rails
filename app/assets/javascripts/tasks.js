@@ -1,25 +1,5 @@
-
-<h2> All Task Lists </h2>
-
-<% @lists.each  do |list| %>
- <h3><%= link_to list.title, list_path(list) %></h3>
- <ul>
- <% list.tasks.each do |task| %>
- <li id="task-<%= task.id %>">
-    <span class="title" id="taskTitle-<%= task.id %>"><%= link_to task.title, list_task_path(list, task) %> |</span>
-    <span id="taskStatus-<%= task.id %>"><%= task.status %> |</span>
-    <span id="taskDuedate-<%= task.id %>"><%= task.due_date %> |</span>
-    <span id="taskUser-<%= task.id %>"><%= task.user_info ||  link_to('Claim Task', edit_list_task_path(list,task)) %></span>
-</li>
-<% end %>
-</ul>
-<% end %><br>
-
-<%= link_to_if(current_user.admin?, 'Add List', new_list_path) %>
-
-
 <script type="text/javascript" charset="utf-8">
-$(function() {
+ $(function() {
   $("span[class=title]").on("click", function(e) {
     e.preventDefault();
     var url = this.childNodes[0].href + ".json";
@@ -37,5 +17,5 @@ $(function() {
       $("#task-" + id).html(taskJ);
     });
   });
-});
+#});
 </script>

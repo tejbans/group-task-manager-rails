@@ -7,8 +7,13 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
+
   def userindex
     @lists = current_user.lists
+    respond_to do |format|
+      format.html { render :userindex  }
+      format.json {render json: @lists}
+    end
   end
 
   
