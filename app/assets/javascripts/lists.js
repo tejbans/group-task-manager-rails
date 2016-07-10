@@ -1,5 +1,5 @@
 
- $(function() {
+ $(function(){
   $("span[class=title]").on("click", function(e) {
     e.preventDefault();
     var url = this.childNodes[0].href + ".json";
