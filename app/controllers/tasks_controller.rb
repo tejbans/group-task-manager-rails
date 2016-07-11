@@ -9,6 +9,14 @@ def index
   @tasks = Task.all
 end
 
+def userindex
+  @tasks = current_user.tasks
+    respond_to do |format|
+      format.html { render :userindex  }
+      format.json {render json: @tasks}
+    end
+  end
+
 def new
   @task = @list.tasks.build
 end
@@ -24,10 +32,7 @@ def create
 end
 
 def show
-  respond_to do |format|
-    format.html { render :show  }
-    format.json {render json: @task}
-  end
+  render json: @task
 end
 
 def completed

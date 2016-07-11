@@ -19,4 +19,10 @@ class Task < ActiveRecord::Base
      end
   end
 
+  def list_info
+    if self.list
+       list.title
+     end
+  end
+
 end

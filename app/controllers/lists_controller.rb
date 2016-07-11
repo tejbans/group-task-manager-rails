@@ -5,11 +5,15 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
+    respond_to do |format|
+      format.html { render :index  }
+      format.json {render json: @lists}
+    end
   end
 
 
   def userindex
-    @lists = current_user.lists
+    @lists = current_user.lists.uniq
     respond_to do |format|
       format.html { render :userindex  }
       format.json {render json: @lists}

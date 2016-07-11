@@ -18,9 +18,9 @@
 <%= link_to_if(current_user.admin?, 'Add List', new_list_path) %>
 
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $("span[class=title]").on("click", function(e) {
+<script type="text/javascript">
+$(function(){
+  $("span.title").on("click", function(e) {
     e.preventDefault();
     var url = this.childNodes[0].href + ".json";
     $.get(url, function(data){
@@ -35,7 +35,7 @@ $(function() {
       var taskJ = taskTitle + taskDescription + taskStatus + taskDuedate + taskUser+ taskSeperator;
 
       $("#task-" + id).html(taskJ);
+      });
     });
   });
-});
-</script>
+  </script>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :lists do
       resources :tasks
     end
-get 'mylists' => 'lists#userindex'
+get 'mylists' => 'tasks#userindex'
 get 'mylists/tasks/completed' => 'tasks#completed'
 get 'mylists/tasks/overdue' => 'tasks#overdue'
 get '/auth/:provider/callback' => 'sessions#create'

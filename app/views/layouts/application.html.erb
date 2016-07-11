@@ -3,7 +3,7 @@
 <head>
   <title>GroupTaskManagerRails</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -22,24 +22,3 @@
 </html>
 
 
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $("a[href='/mylists']").on("click", function(e) {
-      e.preventDefault();
-    $.get("/mylists.json", function(data){
-      var taskList = "";
-      data.forEach(function(list) {
-        taskList += "<ul><h3>" + list["title"] + "</h3>" ;
-          list.tasks.forEach(function(task) {
-             taskList += '<li>' + task["title"] + '|' ;
-             taskList +=  task["status"] + '|' ;
-             taskList +=  task["due_date"] + '|' ;
-             taskList +=  "Assigned to: " + task["user_info"] + '</li><br>' ;
-          });
-        taskList += '</ul>';
-      });
-      $(".col-md-8").html(taskList);
-    });
-  });
-});
-</script>
