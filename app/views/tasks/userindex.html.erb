@@ -1,0 +1,17 @@
+<h2> My Task Lists </h2>
+
+<% @tasks.uniq.each  do |task| %>
+ <h3><%= link_to task.list.title, list_path(task.list) %></h3>
+ <ul>
+     <li>
+        <%= link_to task.title, list_task_path(task.list, task) %> |
+        <%= task.status %> |
+        <%= task.due_date %> |
+        Assigned to: <%= task.user.email %>
+      </li>
+  </ul>
+  <% end %>
+
+  <div id="my-task-lists">
+  </div>
+

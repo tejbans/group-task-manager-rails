@@ -11,22 +11,3 @@
   </aside>
 <% end %>
 
-<script type="text/javascript">
-$(function(){
-$("a[href='/mylists']").on("click", function(e) {
-      e.preventDefault();
-    $.get("/mylists.json", function(data){
-      var taskList = "<h2> My Task Lists </h2>";
-      data.forEach(function(task) {
-            taskList +=  "<h3><a href=/lists/"+ task["list_id"]+">"+ task["list_info"]+"</a></h3>"  ;
-             taskList += "<ul><li>" + task["title"] + ' | ' ;
-             taskList +=  task["status"] + ' | ' ;
-             taskList +=  task["due_date"] + ' | ' ;
-             taskList +=  "Assigned to: " + task["user_info"] + '</li><br>' ;
-            taskList += '</ul>';
-      });
-      $(".col-md-8").html(taskList);
-    });
-  });
-});
-</script>
