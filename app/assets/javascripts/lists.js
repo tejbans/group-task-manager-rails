@@ -18,7 +18,6 @@ $(document).ready(function(){
       var taskJ = taskTitle + taskDescription + taskStatus + taskDuedate + taskUser+ taskEdit + taskDel +taskSeperator;
       var $selector = $("#task-" + id);
       $selector.html(taskJ);
-      $selector.slideDown(1000);
       });
     });
   });
