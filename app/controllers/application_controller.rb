@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :require_login, except: [:home, :new, :create]
 
   def home
+    if logged_in?
+      redirect_to lists_path
+    end
   end
 
 private
