@@ -9,8 +9,8 @@
         <span id="taskUser-<%= task.id %>"><%= task.user_info ||  link_to('Claim Task', edit_list_task_path(@list,task)) %></span>
         
       </li>
-  <% end %><br>
-  <%= link_to_if(current_user.admin?, 'Add a Task', new_list_task_path(@list))  %>
+  <% end %>
+  <%#= link_to_if(current_user.admin?, 'Add a Task', new_list_task_path(@list))  %>
 </ul>
 <%= render 'tasks/form' %>
 

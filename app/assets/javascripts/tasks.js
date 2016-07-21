@@ -40,3 +40,19 @@ Task.prototype.buildTask = function(){
       return taskList
     }
 
+$(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post(this.action , values);
+
+      posting.done(function(task){
+        var taskLi = "";
+        taskLi += "<li>"+ "<a class=task_title href=/lists/"+ task["list_id"]+ "/tasks/"+ task["id"] + ">"+ task["title"] + "</a></h3> |" ;
+             taskLi +=  task["status"] + ' | ' ;
+             taskLi +=  task["due_date"] + ' | ' ;
+             taskLi +=  task["user_info"] + '</li><br>' ;
+             $("ul.listshow").append(taskLi);
+      });
+    });
+  });
