@@ -25,7 +25,8 @@ def create
   @task = @list.tasks.build(admin_task_params)
   if @task.save
     flash[:success] = "Task created"
-    redirect_to @list
+    render json: @task, status: 201
+    #redirect_to @list
   else
     render :new
   end
