@@ -26,9 +26,6 @@ def create
   if @task.save
     flash[:success] = "Task created"
     render json: @task, status: 201
-    #redirect_to @list
-  else
-    render :new
   end
 end
 

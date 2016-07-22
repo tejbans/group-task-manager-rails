@@ -33,7 +33,7 @@ class ListsController < ApplicationController
  end
 
 def show
- 
+  #@task= @list.tasks.build
 end
 
 def edit
